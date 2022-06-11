@@ -1,5 +1,5 @@
 {
-  "name": "indie-stack-template",
+  "name": "remix-indie-test-1448",
   "private": true,
   "sideEffects": false,
   "scripts": {
@@ -75,6 +75,6 @@
     "node": ">=14"
   },
   "prisma": {
-    "seed": "ts-node --require tsconfig-paths/register prisma/seed.ts"
+    "seed": "ts-node --require tsconfig-paths/register prisma/seed.js"
   }
 }

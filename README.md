@@ -57,9 +57,9 @@ The database seed script creates a new user with some data you can use to get st
 
 This is a pretty simple note-taking app, but it's a good example of how you can build a full stack app with Prisma and Remix. The main functionality is creating users, logging in and out, and creating and deleting notes.
 
-- creating users, and logging in and out [./app/models/user.server.ts](./app/models/user.server.ts)
-- user sessions, and verifying them [./app/session.server.ts](./app/session.server.ts)
-- creating, and deleting notes [./app/models/note.server.ts](./app/models/note.server.ts)
+- creating users, and logging in and out [./app/models/user.server.js](./app/models/user.server.js)
+- user sessions, and verifying them [./app/session.server.js](./app/session.server.js)
+- creating, and deleting notes [./app/models/note.server.js](./app/models/note.server.js)
 
 ## Deployment
 
@@ -80,8 +80,8 @@ Prior to your first deployment, you'll need to do a few things:
 - Create two apps on Fly, one for staging and one for production:
 
   ```sh
-  fly create indie-stack-template
-  fly create indie-stack-template-staging
+  fly create remix-indie-test-d2d7
+  fly create remix-indie-test-d2d7-staging
   ```
 
   - Initialize Git.
@@ -101,8 +101,8 @@ Prior to your first deployment, you'll need to do a few things:
 - Add a `SESSION_SECRET` to your fly app secrets, to do this you can run the following commands:
 
   ```sh
-  fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app indie-stack-template
-  fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app indie-stack-template-staging
+  fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app remix-indie-test-d2d7
+  fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app remix-indie-test-d2d7-staging
   ```
 
   If you don't have openssl installed, you can also use [1password](https://1password.com/password-generator/) to generate a random secret, just replace `$(openssl rand -hex 32)` with the generated secret.
@@ -110,8 +110,8 @@ Prior to your first deployment, you'll need to do a few things:
 - Create a persistent volume for the sqlite database for both your staging and production environments. Run the following:
 
   ```sh
-  fly volumes create data --size 1 --app indie-stack-template
-  fly volumes create data --size 1 --app indie-stack-template-staging
+  fly volumes create data --size 1 --app remix-indie-test-d2d7
+  fly volumes create data --size 1 --app remix-indie-test-d2d7-staging
   ```
 
 Now that everything is set up you can commit and push your changes to your repo. Every commit to your `main` branch will trigger a deployment to your production environment, and every commit to your `dev` branch will trigger a deployment to your staging environment.
